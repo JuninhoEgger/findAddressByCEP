@@ -2,12 +2,13 @@ package service;
 
 import address.Address;
 import com.google.gson.Gson;
-import utils.Util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static utils.Util.convertJsonToString;
 
 public class CepService {
 
@@ -29,7 +30,7 @@ public class CepService {
                 throw new RuntimeException("HTTP error code: " + connection.getResponseCode());
             } else {
                 BufferedReader response = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder jsonString = Util.convertJsonToString(response);
+                StringBuilder jsonString = convertJsonToString(response);
 
                 Gson gson = new Gson();
                 Address address;
