@@ -2,6 +2,7 @@ package service;
 
 import address.Address;
 import com.google.gson.Gson;
+import exception.ErrorException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,7 +17,7 @@ public class CepService {
     private static final Integer OK = 200;
 
     private CepService() {
-        //FIX-mE
+        //Construtor vazio inutilizado apontado pelo sonar
     }
 
     public static Address findAddressByCep(String cep) throws Exception {
@@ -27,7 +28,7 @@ public class CepService {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             if (connection.getResponseCode() != OK) {
-                throw new RuntimeException("HTTP error code: " + connection.getResponseCode());
+                throw new ErrorException("HTTP error code: " + connection.getResponseCode());
             } else {
                 BufferedReader response = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder jsonString = convertJsonToString(response);
@@ -40,7 +41,7 @@ public class CepService {
             }
 
         } catch (Exception e) {
-            throw new Exception("ERRO: " + e);
+            throw new ErrorException("ERRO: " + e);
         }
 
     }
