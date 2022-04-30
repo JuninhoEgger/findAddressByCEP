@@ -20,7 +20,7 @@ public class CepService {
         //Construtor vazio inutilizado apontado pelo sonar
     }
 
-    public static Address findAddressByCep(String cep) throws Exception {
+    public static Address findAddressByCep(String cep) throws ErrorException {
         String urlConnection = WEB_SERVICE + cep + "/json";
 
         try {

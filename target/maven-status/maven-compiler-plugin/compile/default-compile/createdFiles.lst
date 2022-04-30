@@ -1,3 +1,4 @@
+exception\ErrorException.class
 service\CepService.class
 address\Address.class
 main\Main.class
